@@ -121,8 +121,8 @@ class ChartsController < ApplicationController
     File.open(filename, 'wb') do |file|
       file.write(uploaded_io.read)
     end
-    File.delete(filename)
     ranked_list = Nlp::MultiRankedList.new(filename)
+    File.delete(filename)
     data = ranked_list.data
     p "title = "+ranked_list.title
     @zipf = {
