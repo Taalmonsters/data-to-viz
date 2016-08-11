@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-xs-12 col-md-8 col-md-offset-2">
+		<h2>Create a Zipf plot</h2>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<p>Upload a file containing one or more tab-separated pairs of tab-separated columns, where the first column of each pair lists the elements and the second column of the pair lists their absolute frequencies. In other words: the pair of columns describes a frequency list.</p>
+			<p>Note that not every series hash to have to same number of elements. Please make sure that all columns line up correctly, i.e. either sort your series by descending size in the file, or supplement shorter series with tab-separated empty values.</p>
+			<p>To configure the chart title and series labels, you may add the values to the top of your file like this:</p>
+			<code>#title=My amazing Zipf plot</code><br/>
+			<code>#series=Series 1,Series 2</code><br/>
+			<code>de&nbsp;&nbsp;&nbsp;&nbsp;55255464&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;765324</code><br/>
+			<code>en&nbsp;&nbsp;&nbsp;&nbsp;23182848&nbsp;&nbsp;&nbsp;&nbsp;de&nbsp;&nbsp;&nbsp;&nbsp;571478</code><br/>
+			<code>...</code>
+			<%= simple_form_for :zipf, url: "/charts/display_zipf", :html => { :multipart => true }, :remote => true do |form| %>
+			  <br/>Select base color: <%= form.text_field :color, :value => '#317777' %><br/>
+			  Select data file: <%= form.file_field :data %><br/>
+			  <%= form.submit 'Draw the line', :class => 'btn btn-primary btn-submit' %>
+			<% end  %>
+		</div>
+		<div id="zipf" class="col-xs-12 col-sm-6 col-md-8 chart-display"></div>
+	</div>
+</div>

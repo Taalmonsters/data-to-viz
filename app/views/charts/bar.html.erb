@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-xs-12 col-md-8 col-md-offset-2">
+		<h2>Create a bar chart</h2>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<p>Upload a file containing 2 tab-separated columns, where the first column lists the categories and the second column lists the absolute value for each category.</p>
+			<p>To configure the chart title, labels and unit of measurement, you may add their values to the top of your file like this:</p>
+			<code>#title=My amazing bar chart</code><br/>
+			<code>#x-axis=Countries</code><br/>
+			<code>#y-axis=Dollars</code><br/>
+			<code>#y-unit=$</code><br/>
+			<code>US&nbsp;&nbsp;&nbsp;&nbsp;3000000</code><br/>
+			<code>UK&nbsp;&nbsp;&nbsp;&nbsp;2450000</code><br/>
+			<code>...</code>
+			<%= simple_form_for :bar, url: "/charts/display_bar", :html => { :multipart => true }, :remote => true do |form| %>
+			  <br/>Select base color: <%= form.text_field :color, :value => '#317777' %><br/>
+			  Select data file: <%= form.file_field :data %><br/>
+			  <%= form.submit 'Plot bars', :class => 'btn btn-primary' %>
+			<% end  %>
+		</div>
+		<div id="bar" class="col-xs-12 col-sm-6 col-md-8 chart-display"></div>
+	</div>
+</div>

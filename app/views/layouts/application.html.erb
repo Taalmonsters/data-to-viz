@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Data To Viz" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Data To Viz" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-more.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
+		<!-- Additional files for the Highslide popup effect -->
+		<script src="https://www.highcharts.com/samples/static/highslide-full.min.js"></script>
+		<script src="https://www.highcharts.com/samples/static/highslide.config.js" charset="utf-8"></script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation_taalmonsters' %>
+    </header>
+	<main class="container-fluid">
+		<div class="row">
+			<div id="footer">
+				<%= render 'layouts/copyright' %>
+			</div>
+			<div id="right" class="col-xs-12" style="padding-top: 10px;">
+				<%= render 'layouts/messages' %>
+				<%= yield %>
+			</div>
+		</div>
+	</main>
+    <div id="banner">DEMO</div>
+  </body>
+</html>

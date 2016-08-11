@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-xs-12 col-md-8 col-md-offset-2 chart-select">
+		<div class="spacer visible-sm visible-md visible-lg"></div>
+		<h1>Choose a chart type for your data:</h1>
+		<% @charts.each do |chart| %>
+		<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 chart-btn-lg">
+			<a href="/charts/<%= chart %>"><img src="<%= image_url("charts/#{chart}.png") %>" /></a>
+		</div>
+		<% end %>
+	</div>
+</div>
